@@ -56,10 +56,10 @@ def train():
     model = DiffusionWrapper(Model(), input_shape=(3, 32, 32))
     model.cuda()
 
-    train_dataset = CIFAR10(root='./data', train=True, transform=transforms.ToTensor(), download=True)
-    val_dataset = CIFAR10(root='./data', train=False, transform=transforms.ToTensor(), download=True)
-    train_loader  = cycle(DataLoader(train_dataset, batch_size = BATCH_SIZE))
-    val_loader    = cycle(DataLoader(val_dataset, batch_size = BATCH_SIZE))
+    train_dataset = CIFAR10(root='/ailab_mat/personal/heo_yunjae/datasets/cifar10/', train=True, transform=transforms.ToTensor(), download=True)
+    val_dataset = CIFAR10(root='/ailab_mat/personal/heo_yunjae/datasets/cifar10/', train=False, transform=transforms.ToTensor(), download=True)
+    train_loader  = cycle(DataLoader(train_dataset, batch_size = BATCH_SIZE, num_workers=2))
+    val_loader    = cycle(DataLoader(val_dataset, batch_size = BATCH_SIZE, num_workers=2))
 
     # optimizer
 
